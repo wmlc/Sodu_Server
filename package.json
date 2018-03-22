@@ -1,0 +1,31 @@
+{
+    "name": "sodu_server",
+    "version": "1.0.0",
+    "description": "server for sodu",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Ruobin521/Sodu_Server.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Ruobin521/Sodu_Server/issues"
+    },
+    "homepage": "https://github.com/Ruobin521/Sodu_Server#readme",
+    "dependencies": {
+        "express": "^4.16.3"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-core": "^6.26.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
+        "babel-preset-stage-3": "^6.24.1",
+        "rimraf": "^2.6.2"
+    }
+}
