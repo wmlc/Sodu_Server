@@ -10,7 +10,7 @@ function getRankBooks(html) {
     let str = html
     let books = []
     let bookReg = /<div class="main-html".[\s\S]*?<div style="width:88px;float:left;">.[\s\S]*?<\/div>/g
-    let listReg = /<a href="(.[\S\s]*?)".*?>.*?addToFav\((.[\S\s]*?), '(.[\S\s]*?)'.[\S\s]*?<a.[\S\s]*?>(.[\S\s]*?)<\/a>.[\S\s]*?88.*>(.[\S\s]*?)<\/div>/
+    let listReg = /<a href="(.[\S\s]*?)".*?>.*?addToFav\((.[\S\s]*?), '(.[\S\s]*?)'.[\S\s]*?<a.[\S\s]*?>(.[\S\s]*?)<\/a>.[\S\s]*?width:88.*>(.[\S\s]*?)<\/div>/
 
     let matches = str.match(bookReg)
     let book
