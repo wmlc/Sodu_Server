@@ -8,7 +8,7 @@ function getUpdateBooks(html) {
         let str = html
         let books = []
         let bookReg = /<a href=.*?加入书架<\/a>.[\s\S]*?left;"><a.*?a>.[\s\S]*?left.*?<\/div>/g
-        let listReg = /<a href="(.*?)">.*?<\/a><a.[\s\S]*?Fav\('(.*?)','(.*?)'\)[\s\S]*?加入书架<\/a>.[\s\S]*?left;"><a.*?>(.*?)<\/a>.[\s\S]*?left;">(.*?)<\/div>/
+        let listReg = /<a href="(.[\S\s]*?)".*?>.*?addToFav\((.[\S\s]*?), '(.[\S\s]*?)'.[\S\s]*?<a.[\S\s]*?>(.[\S\s]*?)<\/a>.[\S\s]*?width:88.*>(.[\S\s]*?)<\/div>/
 
         let matches = str.match(bookReg)
         let book
