@@ -2,7 +2,7 @@ import axios from 'axios';
 import url from '../api/url';
 import Book from '../model/book'
 const resultCode = require('../api/result-code');
-
+var moment = require('moment')
 
 var iconv = require('iconv-lite');
 
@@ -21,7 +21,7 @@ function getRankBooks(html) {
         book.bookName = match[3]
         book.newestCatalogName = match[4]
         book.updatePageUrl = match[1]
-        book.updateTime = match[5]
+        book.updateTime = moment(match[5], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
         books.push(book)
     })
     return books
