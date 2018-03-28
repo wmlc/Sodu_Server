@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const rank = require('./router/rank')
 const update = require('./router/update')
+const chapter = require('./router/updatechapter')
 const axios = require('axios')
 const bodyParser = require('body-parser');
 
@@ -9,6 +10,7 @@ axios.defaults.headers.common["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac
 axios.defaults.timeout = 15000;
 app.use('/rank', rank)
 app.use('/update', update)
+app.use('/chapter', chapter)
 app.use(bodyParser.json({ limit: '1mb' })); //body-parser 解析json格式数据
 app.use(bodyParser.urlencoded({ //此项必须在 bodyParser.json 下面,为参数编码
     extended: true
