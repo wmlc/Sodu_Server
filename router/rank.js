@@ -6,7 +6,7 @@ import url from '../api/url';
 var router = express.Router();
 router.get('/', function(req, res) {
     let index = req.query.page
-    index = index ? parseInt(index) : 0
+    index = index ? parseInt(index) : 1
     var data = rank.getRank(index).then(result => {
         res.send(result)
     })

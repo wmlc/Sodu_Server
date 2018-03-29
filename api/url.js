@@ -1,6 +1,6 @@
 const sodu = {
     home: "http://www.sodu.cc",
-    rank: "http://www.sodu.cc/top{{index}}.html",
+    rank: "http://www.sodu.cc/top_{{index}}.html",
     search: "http://www.sodu.cc/result.html?searchstr=",
     lastUpdate: 'http://www.sodu.cc/map.html',
     updateChapter: 'http://www.sodu.cc/mulu_{{bookid}}.html'
@@ -11,7 +11,7 @@ function getHomeUrl() {
 }
 
 function getRankUrl(index) {
-    return index == 0 ? sodu.rank.replace('{{index}}', '') : sodu.rank.replace('{{index}}', '_' + index)
+    return sodu.rank.replace('{{index}}', index)
 }
 
 function getSearchUrl(para) {
