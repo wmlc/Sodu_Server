@@ -15,7 +15,7 @@ function getRankUrl(index) {
 }
 
 function getSearchUrl(para) {
-    return sodu.search + para
+    return sodu.search + encodeURI(para)
 }
 
 function getLastUpdateUrl(para) {
