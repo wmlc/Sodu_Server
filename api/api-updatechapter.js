@@ -47,8 +47,8 @@ function getTotalPage(html) {
     }
 }
 
-async function getUpdateChapters(bookid, bookName) {
-    let uri = url.getUpdateChapterUrl(bookid)
+async function getUpdateChapters(bookid, bookName, index) {
+    let uri = url.getUpdateChapterUrl(bookid, index)
     try {
         var result = await axios({
             method: 'get',

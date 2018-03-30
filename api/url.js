@@ -3,7 +3,7 @@ const sodu = {
     rank: "http://www.sodu.cc/top_{{index}}.html",
     search: "http://www.sodu.cc/result.html?searchstr=",
     lastUpdate: 'http://www.sodu.cc/map.html',
-    updateChapter: 'http://www.sodu.cc/mulu_{{bookid}}.html'
+    updateChapter: 'http://www.sodu.cc/mulu_{{bookid}}_{{index}}.html'
 }
 
 function getHomeUrl() {
@@ -22,8 +22,8 @@ function getLastUpdateUrl(para) {
     return sodu.lastUpdate
 }
 
-function getUpdateChapterUrl(bookid) {
-    return sodu.updateChapter.replace('{{bookid}}', bookid)
+function getUpdateChapterUrl(bookid, index) {
+    return sodu.updateChapter.replace('{{bookid}}', bookid).replace('{{index}}', index)
 }
 
 
