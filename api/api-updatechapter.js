@@ -17,8 +17,8 @@ function getCatalogs(html, bookid, bookName) {
             var match = element.match(listReg)
             if (match) {
                 temp = new Catalog()
-                temp.bookId = bookid
-                temp.bookName = bookName
+                    // temp.bookId = bookid
+                    // temp.bookName = bookName
                 temp.catalogkName = match[2]
                 temp.catalogUrl = match[1]
                 temp.lyWeb = match[3]
@@ -32,6 +32,20 @@ function getCatalogs(html, bookid, bookName) {
     }
 }
 
+function getTotalPage(html) {
+    try {
+        let str = html
+        let page = 1
+        let reg = /总计.*?个记录，共(.*?)页/
+        let match = str.match(reg)
+        if (match) {
+            page = parseInt(match[1])
+        }
+        return page
+    } catch (error) {
+        return 1
+    }
+}
 
 async function getUpdateChapters(bookid, bookName) {
     let uri = url.getUpdateChapterUrl(bookid)
@@ -40,9 +54,11 @@ async function getUpdateChapters(bookid, bookName) {
             method: 'get',
             url: uri
         })
-        var books = getCatalogs(result.data, bookid, bookName)
-        if (books) {
-            let result = resultCode.createResult(resultCode.success, books)
+        var list = getCatalogs(result.data, bookid, bookName)
+        if (list) {
+            let result = resultCode.createResult(resultCode.success, list)
+            let page = getTotalPage(html)
+            result.totalPage = page
             return result
         } else {
             throw new Error('未获取到章节列表')
