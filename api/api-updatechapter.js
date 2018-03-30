@@ -55,9 +55,9 @@ async function getUpdateChapters(bookid, bookName) {
             url: uri
         })
         var list = getCatalogs(result.data, bookid, bookName)
+        let page = getTotalPage(result.data)
         if (list) {
             let result = resultCode.createResult(resultCode.success, list)
-            let page = getTotalPage(html)
             result.totalPage = page
             return result
         } else {
