@@ -20,7 +20,7 @@ function getBooks(html) {
             book.bookName = match[3]
             book.newestCatalogName = match[4]
             book.updatePageUrl = match[1]
-            book.updateTime = moment(match[5], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
+            book.updateTime = '搜索引擎'
             books.push(book)
         })
         return books
