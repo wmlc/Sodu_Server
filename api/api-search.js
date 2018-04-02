@@ -18,7 +18,7 @@ function getBooks(html) {
             book = new Book()
             book.bookId = match[2]
             book.bookName = match[3]
-            book.newestCatalogName = match[4]
+            book.newestCatalogName = match[4].replace(/【.*？】/, '')
             book.updatePageUrl = match[1]
             book.updateTime = moment(match[5], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
             book.lyWeb = '搜索引擎'

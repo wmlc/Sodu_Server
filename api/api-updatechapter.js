@@ -19,7 +19,7 @@ function getCatalogs(html, bookid, bookName) {
                 temp = new Catalog()
                     // temp.bookId = bookid
                     // temp.bookName = bookName
-                temp.catalogkName = match[2]
+                temp.catalogkName = match[2].replace(/【.*？】/, '')
                 temp.catalogUrl = match[1]
                 temp.lyWeb = match[3]
                 temp.updateTime = moment(match[4], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
