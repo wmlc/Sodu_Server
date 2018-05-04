@@ -3,7 +3,7 @@ import url from '../api/url';
 import Book from '../model/book'
 const resultCode = require('../api/result-code');
 var moment = require('moment')
-
+console.log("object");
 var iconv = require('iconv-lite');
 
 function getRankBooks(html) {
