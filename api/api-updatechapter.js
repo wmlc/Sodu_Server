@@ -17,8 +17,8 @@ function getCatalogs(html, bookid, bookName) {
             var match = element.match(listReg)
             if (match) {
                 temp = new Catalog()
-                    // temp.bookId = bookid
-                    // temp.bookName = bookName
+                temp.bookId = bookid
+                temp.bookName = bookName
                 temp.catalogkName = match[2].replace(/【.*？】/, '')
                 temp.catalogUrl = match[1]
                 temp.lyWeb = match[3]
