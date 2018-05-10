@@ -17,6 +17,9 @@ app.use(bodyParser.urlencoded({ //此项必须在 bodyParser.json 下面,为参�
 axios.defaults.headers.common["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.162 Safari/537.36"
 axios.defaults.timeout = 15000;
 
+app.get('/', function(req, res, next) {
+    res.send('欢迎使用小说搜索阅读');
+});
 
 app.use('/rank', rank)
 app.use('/update', update)
