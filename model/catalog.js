@@ -4,7 +4,7 @@ class Catalog {
     constructor() {
         this.bookId = ''
         this.bookName = ''
-        this.catalogkName = ''
+        this.catalogName = ''
         this.catalogUrl = ''
         this.catalogContent = ''
         this.lyWeb = ''
