@@ -7,6 +7,7 @@ const rank = require('./router/rank')
 const update = require('./router/update')
 const chapter = require('./router/updatechapter')
 const search = require('./router/search')
+const content = require('./router/content')
 
 
 app.use(bodyParser.json({ limit: '1mb' })); //body-parser 解析json格式数据
@@ -25,6 +26,7 @@ app.use('/rank', rank)
 app.use('/update', update)
 app.use('/chapter', chapter)
 app.use('/search', search)
+app.use('/content', content)
 
 
 app.listen(40002, '127.0.0.1', function() {

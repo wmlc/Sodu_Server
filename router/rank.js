@@ -7,7 +7,7 @@ var router = express.Router();
 router.get('/', function(req, res) {
     let index = req.query.index
     index = index ? parseInt(index) : 1
-    var data = rank.getRank(index).then(result => {
+    rank.getRank(index).then(result => {
         res.send(result)
     })
 })

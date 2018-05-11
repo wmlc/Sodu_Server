@@ -11,7 +11,6 @@ class Catalog {
         this.updateTime = ''
     }
 
-
     clone() {
         return lodash.clone(this)
     }
