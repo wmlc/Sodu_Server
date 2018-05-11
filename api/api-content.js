@@ -1,14 +1,19 @@
 import axios from 'axios';
 import url from '../api/url';
 import util from '../util/htmlAnalyse'
-
+const iconv = require('iconv-lite');
 const resultCode = require('../api/result-code');
 
 async function getContent(params) {
     try {
         var result = await axios({
             method: 'get',
-            url: params.url
+            url: params.url,
+            responseType: 'arraybuffer',
+            transformResponse: [function(data) {
+                var str = iconv.decode(data, 'GBK')
+                return str
+            }]
         })
         var content = util.getContent(result.data)
         let result = resultCode.createResult(resultCode.success, content)
