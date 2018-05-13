@@ -18,18 +18,17 @@ function getCatalogs(html, bookid, bookName) {
         matches.forEach(element => {
             var match = element.match(listReg)
             if (match) {
-                temp = new Catalog()
-                temp.bookId = bookid
-                temp.bookName = bookName
-                temp.catalogName = match[2].replace(/【.*？】/, '')
-                temp.catalogUrl = match[1]
-                let uri = Uri(temp.catalogUrl)
-                if (!source.check(url)) {
-                    continue
+                let uri = Uri(match[1])
+                if (source.check(uri.host)) {
+                    temp = new Catalog()
+                    temp.catalogUrl = match[1]
+                    temp.bookId = bookid
+                    temp.bookName = bookName
+                    temp.catalogName = match[2].replace(/【.*？】/, '')
+                    temp.lyWeb = match[3]
+                    temp.updateTime = moment(match[4], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
+                    list.push(temp)
                 }
-                temp.lyWeb = match[3]
-                temp.updateTime = moment(match[4], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
-                list.push(temp)
             }
         })
         return list
