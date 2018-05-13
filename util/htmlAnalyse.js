@@ -45,6 +45,8 @@ function replaceSymbel(html) {
     html = html.replace(/　/g, "");
     html = html.replace(/ /g, "");
     html = html.replace(/\n/g, '\n　　');
+    html = html.replace('八一中文网启用新网址Www.81xsw.Com', '');
+
     return '　　' + html;
 }
 
