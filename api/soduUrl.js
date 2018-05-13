@@ -27,4 +27,5 @@ function getUpdateChapterUrl(bookid, index) {
 }
 
 
+
 module.exports = { getHomeUrl, getRankUrl, getSearchUrl, getLastUpdateUrl, getUpdateChapterUrl }

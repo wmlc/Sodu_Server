@@ -1,5 +1,5 @@
 import axios from 'axios';
-import url from '../api/url';
+import url from '../api/soduUrl';
 import Book from '../model/book'
 var moment = require('moment')
 const resultCode = require('../api/result-code');

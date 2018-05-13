@@ -1,7 +1,6 @@
 var express = require('express');
 var rank = require('../api/api-rank')
 import axios from 'axios';
-import url from '../api/url';
 
 var router = express.Router();
 router.get('/', function(req, res) {
