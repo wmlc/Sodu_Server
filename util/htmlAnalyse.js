@@ -32,6 +32,7 @@ function getHtmlCommon(html, regexStr) {
     }
 }
 
+
 function replaceSymbel(html) {
     html = html.replace(/<br.*?\/>/g, "\n");
     html = html.replace(/<script.*?<\/script>/g, "");
@@ -42,7 +43,7 @@ function replaceSymbel(html) {
     html = html.replace(/&lt;\/div&gt;/g, "");
     html = html.replace(/\n\n/g, "\n");
     html = html.replace("　　　　　　", "　　");
-    html = html.replace(/\n/g, '\n    ');
+    html = html.replace(/\n/g, '\n　　');
     return html;
 }
 
