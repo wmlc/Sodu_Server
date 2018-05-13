@@ -1,6 +1,7 @@
-import source from '../model/source'
+import sourceHelper from '../model/source'
 import Url from '../util/url'
 
+let source = sourceHelper.source;
 
 function getContent(html, url, bookid, type) {
     let uri = Url(url)

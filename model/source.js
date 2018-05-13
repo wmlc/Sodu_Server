@@ -98,15 +98,20 @@ const source = {
         type: 1,
         host: 'www.aileleba.com',
         disc: '乐安宣书网'
-    },
-    check(host) {
-        this.keys.forEach(element => {
-            if (this[element].host !== host) {
-                return false
-            }
-        });
-        return true
     }
+
 }
 
-module.exports = source
+function check(host) {
+    for (var key in source) {
+        if (source[key].host == host) {
+            return true
+        }
+    }
+    return false
+}
+
+module.exports = {
+    source,
+    check
+}
