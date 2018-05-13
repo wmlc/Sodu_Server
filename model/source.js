@@ -94,6 +94,11 @@ const source = {
         host: 'www.prwx.com',
         disc: '一流吧'
     },
+    lax: {
+        type: 1,
+        host: 'www.aileleba.com',
+        disc: '乐安宣书网'
+    },
     check(host) {
         this.keys.forEach(element => {
             if (this[element].host !== host) {
