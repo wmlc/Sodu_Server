@@ -6,6 +6,9 @@ function getContent(html, url, bookid, type) {
     let uri = Url(url)
     let result = null
     switch (uri.host) {
+        case source.snwx.host:
+            result = getHtmlCommon(html, /<div id=\"BookText\">.*?<\/div>/)
+            break;
         case source.byxsw.host:
             result = getHtmlCommon(html, /<div id=\"?content\"?[\s\S]*?<\/div>/)
             break;
