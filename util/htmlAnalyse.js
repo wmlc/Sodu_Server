@@ -42,9 +42,10 @@ function replaceSymbel(html) {
     html = html.replace(/&lt;\/script&gt;/g, "");
     html = html.replace(/&lt;\/div&gt;/g, "");
     html = html.replace(/\n\n/g, "\n");
-    html = html.replace("　　　　　　", "　　");
+    html = html.replace(/　/g, "");
+    html = html.replace(/ /g, "");
     html = html.replace(/\n/g, '\n　　');
-    return html;
+    return '　　' + html;
 }
 
 module.exports = {
