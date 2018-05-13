@@ -33,17 +33,16 @@ function getHtmlCommon(html, regexStr) {
 }
 
 function replaceSymbel(html) {
-    html = html.replace(/<br.*?\/>/g, "\n");
+    html = html.replace(/<br.*?\/>/g, "\n    ");
     html = html.replace(/<script.*?<\/script>/g, "");
     html = html.replace(/&nbsp;/g, " ");
-    html = html.replace(/<p.*?>/g, "\n");
+    html = html.replace(/<p.*?>/g, "\n    ");
     html = html.replace(/<.*?>/g, "");
     html = html.replace(/&lt;\/script&gt;/g, "");
     html = html.replace(/&lt;\/div&gt;/g, "");
     html = html.replace("  ", "　");
-    html = html.replace(/\n\n/g, "\n");
+    html = html.replace(/\n\n/g, "\n    ");
     html = html.replace("　　　　　　", "　　");
-    html = html.trim();
     return html;
 }
 
