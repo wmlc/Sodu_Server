@@ -1,5 +1,7 @@
 import axios from 'axios';
+import source from '../model/source';
 import url from '../api/soduUrl';
+import Uri from '../util/url';
 import Catalog from '../model/catalog'
 var moment = require('moment')
 const resultCode = require('../api/result-code');
@@ -21,6 +23,10 @@ function getCatalogs(html, bookid, bookName) {
                 temp.bookName = bookName
                 temp.catalogName = match[2].replace(/【.*？】/, '')
                 temp.catalogUrl = match[1]
+                let uri = Uri(temp.catalogUrl)
+                if (!source.check(url)) {
+                    continue
+                }
                 temp.lyWeb = match[3]
                 temp.updateTime = moment(match[4], 'YYYY/MM/DD hh:mm:ss').format('YYYY/MM/DD hh:mm')
                 list.push(temp)
