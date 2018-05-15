@@ -10,4 +10,10 @@ router.post('/', function(req, res) {
     })
 })
 
+router.post('/catalogs', function(req, res) {
+    content.getCatalogs(req.body).then(result => {
+        res.send(result)
+    })
+})
+
 module.exports = router;
