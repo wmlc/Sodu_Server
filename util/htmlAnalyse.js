@@ -77,7 +77,7 @@ function getContent(html, url, bookid, type) {
             break;
             //一流吧
         case source.ylb.host:
-            result = getHtmlCommon(html, /<\/tr><\/table>[\s\S]<br\/>[\s\S]*?<center>/)
+            result = getHtmlCommon(html, /<\/tr><\/table>.*?<br\/>.*?<center>/)
             break;
             //乐安宣书网
         case source.lax.host:
