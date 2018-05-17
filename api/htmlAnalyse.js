@@ -107,13 +107,16 @@ function getCatalogs(html, regexStrs, catalogPageUrl) {
         var catalogMatch = html.match(regexStrs.catalogAreaRegex)
         if (catalogMatch) {
             let matches = catalogMatch[0].match(regexStrs.catalogItemRegex)
+            let index = 0;
             matches.forEach(element => {
                 var match = element.match(regexStrs.catalogItemDetailRegex)
                 if (match && match.length > 1) {
                     let catalog = {}
+                    catalog.index = index
                     catalog.catalogUrl = regexStrs.addPre ? catalogPageUrl + match[1] : match[1]
                     catalog.catalogName = match[2]
                     catalogs.push(catalog)
+                    index += 1
                 }
             })
         }
