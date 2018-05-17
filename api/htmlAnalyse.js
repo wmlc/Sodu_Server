@@ -17,6 +17,7 @@ function getContent(html, url, bookid, type) {
         result = getCatalogPageUrl(url, url, bookid)
     } else if (type == contentType.catalgs) {
         result = getCatalogs(html, sourceItem.catalogReges, url)
+        result.lyWeb = sourceItem.disc
     }
     return result;
 }
