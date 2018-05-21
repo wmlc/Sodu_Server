@@ -60,8 +60,6 @@ async function checkUpdate(list) {
         }
     });
 
-    console.log(datas);
-
     var temp = []
 
     for (var item in datas) {
@@ -70,7 +68,6 @@ async function checkUpdate(list) {
         temp.push(catalog)
     }
 
-    console.log(temp);
     let value = resultCode.createResult(resultCode.success, temp)
     return value
 }
