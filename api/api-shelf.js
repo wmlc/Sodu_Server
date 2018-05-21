@@ -44,32 +44,36 @@ function getData(params) {
 
 async function checkUpdate(list) {
 
+    try {
+        var arry = JSON.parse(list)
 
-    var arry = JSON.parse(list)
+        let requests = arry.map((element) => {
+            return axios.get(element.url)
+        });
 
-    let requests = arry.map((element) => {
-        return axios.get(element.url)
-    });
+        var results = await axios.all(requests)
 
-    var results = await axios.all(requests)
+        let datas = results.map((item, index) => {
+            return {
+                data: item.data,
+                id: arry[index].id,
+                bookType: arry[index].bookType
+            }
+        });
 
-    let datas = results.map((item, index) => {
-        return {
-            data: item.data,
-            id: arry[index].id
+        var temp = []
+
+        for (var item in datas) {
+            var list = getCatalogs(datas[item].data, datas[item].id)
+            var catalog = list[0]
+            temp.push(catalog)
         }
-    });
 
-    var temp = []
-
-    for (var item in datas) {
-        var list = getCatalogs(datas[item].data, datas[item].id)
-        var catalog = list[0]
-        temp.push(catalog)
+        let value = resultCode.createResult(resultCode.success, temp)
+        return value
+    } catch (e) {
+        return resultCode.createResult(resultCode.faild, e.message)
     }
-
-    let value = resultCode.createResult(resultCode.success, temp)
-    return value
 }
 
 module.exports = {

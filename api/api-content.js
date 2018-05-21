@@ -17,7 +17,7 @@ async function getContent(params) {
             }]
         })
         var content = analysis.getContent(result.data, params.url, params.id, contentType.content)
-        value = resultCode.createResult(resultCode.success, content)
+        let value = resultCode.createResult(resultCode.success, content)
         return value
     } catch (e) {
         let value = resultCode.createResult(resultCode.faild, e.message)
