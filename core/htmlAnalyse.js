@@ -1,4 +1,4 @@
-import sourceHelper from '../model/source'
+import sourceHelper from '../core/source'
 import Url from '../util/url'
 import contentType from '../model/contentType'
 

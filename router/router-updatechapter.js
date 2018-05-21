@@ -1,6 +1,6 @@
 const express = require('express');
 const api = require('../api/api-updatechapter')
-const resultCode = require('../api/result-code');
+const resultCode = require('../api/api-resultCode');
 const router = express.Router();
 
 router.get('/', function(req, res) {

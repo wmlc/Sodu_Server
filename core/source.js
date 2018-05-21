@@ -231,22 +231,6 @@ const source = {
             addPre: true,
         }
     },
-    // pldwx: {
-    //     type: 1,
-    //     host: 'piaoliudi.com',
-    //     disc: '漂流地文学',
-    //     contentReg: /<div id=\"BookText\">.*?<\/div>/,
-    //     catalogReges: {
-    //         catalogAreaRegex: /<dl class=\"chapterlist\">.*?<\/dl>/,
-    //         catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
-    //         catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
-    //         introRegex: /<p class=\"book-intro\">(.*?)<\/p>/,
-    //         coverRegex: /<div class=\"book-img\">.*?<img.*?src=\"(.*?)\".*?\/>/,
-    //         authorRegex: /<p>作.*?者：(.*?)<\/p>/,
-    //         addPre: true,
-    //         imgPre: true
-    //     }
-    // },
     qlwx: {
         type: 1,
         host: 'www.76wx.com',

@@ -1,9 +1,8 @@
 import axios from 'axios';
-import url from '../api/soduUrl';
+import url from '../core/soduUrl';
 import Book from '../model/book'
-const resultCode = require('../api/result-code');
+const resultCode = require('../api/api-resultCode');
 var moment = require('moment')
-console.log("object");
 var iconv = require('iconv-lite');
 
 function getRankBooks(html) {

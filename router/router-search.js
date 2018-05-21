@@ -1,6 +1,6 @@
 var express = require('express');
 var api = require('../api/api-search')
-const resultCode = require('../api/result-code');
+const resultCode = require('../api/api-resultCode');
 
 import axios from 'axios';
 

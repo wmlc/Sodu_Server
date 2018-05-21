@@ -37,41 +37,44 @@ function getCatalogs(html, bookid, bookName) {
     }
 }
 
-function getTotalPage(html) {
-    try {
-        let str = html
-        let page = 1
-        let reg = /总计.*?个记录，共(.*?)页/
-        let match = str.match(reg)
-        if (match) {
-            page = parseInt(match[1])
-        }
-        return page
-    } catch (error) {
-        return 1
-    }
+function getData(params) {
+
 }
 
-async function getUpdateChapters(bookid, bookName, index) {
-    let uri = url.getUpdateChapterUrl(bookid, index)
-    try {
-        var result = await axios({
-            method: 'get',
-            url: uri
-        })
-        var list = getCatalogs(result.data, bookid, bookName)
-        let page = getTotalPage(result.data)
-        if (list) {
-            let result = resultCode.createResult(resultCode.success, list)
-            result.totalPage = page
-            return result
-        } else {
-            throw new Error('未获取到章节列表')
+
+async function checkUpdate(list) {
+
+
+    var arry = JSON.parse(list)
+
+    let requests = arry.map((element) => {
+        return axios.get(element.url)
+    });
+
+    var results = await axios.all(requests)
+
+    let datas = results.map((item, index) => {
+        return {
+            data: item.data,
+            id: arry[index].id
         }
-    } catch (e) {
-        let result = resultCode.createResult(resultCode.faild, e.message)
-        return result
+    });
+
+    console.log(datas);
+
+    var temp = []
+
+    for (var item in datas) {
+        var list = getCatalogs(datas[item].data, datas[item].id)
+        var catalog = list[0]
+        temp.push(catalog)
     }
+
+    console.log(temp);
+    let value = resultCode.createResult(resultCode.success, temp)
+    return value
 }
 
-module.exports = { getUpdateChapters }
+module.exports = {
+    checkUpdate
+}

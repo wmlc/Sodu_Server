@@ -1,8 +1,8 @@
 import axios from 'axios';
 import Book from '../model/book'
-import url from '../api/soduUrl'
+import url from '../core/soduUrl'
 var moment = require('moment')
-const resultCode = require('../api/result-code');
+const resultCode = require('../api/api-resultCode');
 
 function getUpdateBooks(html) {
     try {

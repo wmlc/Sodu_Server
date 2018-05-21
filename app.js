@@ -3,11 +3,12 @@ const app = express();
 const axios = require('axios')
 const bodyParser = require('body-parser');
 
-const rank = require('./router/rank')
-const update = require('./router/update')
-const chapter = require('./router/updatechapter')
-const search = require('./router/search')
-const content = require('./router/content')
+const rank = require('./router/router-rank')
+const update = require('./router/router-lastupdate')
+const chapter = require('./router/router-updatechapter')
+const search = require('./router/router-search')
+const content = require('./router/router-content')
+const shelf = require('./router/router-shelf')
 
 
 app.use(bodyParser.json({ limit: '1mb' })); //body-parser 解析json格式数据
@@ -27,6 +28,7 @@ app.use('/update', update)
 app.use('/chapter', chapter)
 app.use('/search', search)
 app.use('/content', content)
+app.use('/shelf', shelf)
 
 
 app.listen(40002, '127.0.0.1', function() {

@@ -1,13 +1,13 @@
 import axios from 'axios';
-import url from '../api/soduUrl';
-import analysis from '../api/htmlAnalyse'
+import url from '../core/soduUrl'
+import analysis from '../core/htmlAnalyse'
 import contentType from '../model/contentType'
 const iconv = require('iconv-lite');
-const resultCode = require('../api/result-code');
+const resultCode = require('../api/api-resultCode');
 
 async function getContent(params) {
     try {
-        var result = await axios({
+        let result = await axios({
             method: 'get',
             url: params.url,
             responseType: 'arraybuffer',
@@ -17,11 +17,11 @@ async function getContent(params) {
             }]
         })
         var content = analysis.getContent(result.data, params.url, params.id, contentType.content)
-        let result = resultCode.createResult(resultCode.success, content)
-        return result
+        value = resultCode.createResult(resultCode.success, content)
+        return value
     } catch (e) {
-        let result = resultCode.createResult(resultCode.faild, e.message)
-        return result
+        let value = resultCode.createResult(resultCode.faild, e.message)
+        return value
     }
 }
 
@@ -44,11 +44,11 @@ async function getCatalogs(params) {
         })
         console.log(result);
         var catalogs = analysis.getContent(result.data, url, params.id, contentType.catalgs)
-        let result = resultCode.createResult(resultCode.success, catalogs)
-        return result
+        let value = resultCode.createResult(resultCode.success, catalogs)
+        return value
     } catch (e) {
-        let result = resultCode.createResult(resultCode.faild, e.message)
-        return result
+        let value = resultCode.createResult(resultCode.faild, e.message)
+        return value
     }
 }
 
