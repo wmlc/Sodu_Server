@@ -50,6 +50,9 @@ function replaceSymbel(html) {
     html = html.replace(/\n\n/g, "\n");
     html = html.replace(/　/g, "");
     html = html.replace(/ /g, "");
+    if (html.startsWith('\n')) {
+        html = html.replace(/\n/, "");
+    }
     html = html.replace(/\n/g, '\n　　');
     html = html.replace('八一中文网启用新网址Www.81xsw.Com', '');
 
