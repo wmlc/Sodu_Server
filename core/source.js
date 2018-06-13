@@ -275,6 +275,23 @@ const source = {
             authorRegex: /<meta property="og:novel:author".*?content=\"(.*?)\"\/>/,
         }
     },
+    bqg: {
+        type: 1,
+        host: 'www.biquge5.com',
+        search:'http://www.biquge5.com/so?searchkey=',
+        disc: '笔趣阁',
+        searchReg:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/g,
+        searchReg2:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/,
+        contentReg: /<div id="content"[\s\S]*?<\/div>/,
+        catalogReges: {
+            catalogAreaRegex: /<ul class="chapters">.*?<\/ul>/,
+            catalogItemRegex: /<a href.*?<\/a>/g,
+            catalogItemDetailRegex: /href=\"(.*?)\">(.*?)<\/a>/,
+            introRegex: /<meta property="og:description".*?content=\"(.*?)\"\/>/,
+            coverRegex: /<meta property="og:image".*?content=\"(.*?)\"\/>/,
+            authorRegex: /<meta property="og:novel:author".*?content=\"(.*?)\"\/>/,
+        }
+    },
 }
 
 function check(host) {

@@ -1,6 +1,7 @@
 import sourceHelper from '../core/source'
 import Url from '../util/url'
 import contentType from '../model/contentType'
+import Book from '../model/book'
 
 let source = sourceHelper.source;
 
@@ -159,7 +160,35 @@ function getCatalogs(html, regexStrs, catalogPageUrl) {
     }
 }
 
+function getSearchResult(html, sourceItem) {
+    try {
+        let matches = html.match(sourceItem.searchReg)
+        let books = []
+        matches.forEach(element => {
+            try {
+                var match = element.match(sourceItem.searchReg2)
+                if (match && match.length > 1) {
+                    let book = new Book()
+                    book.type = 1
+                    book.bookId = sourceItem.disc + match[4]
+                    book.bookName = match[2]
+                    book.updatePageUrl = match[1]
+                    book.lyWeb = sourceItem.disc 
+                    books.push(book)
+                }
+                 return books
+            } catch (err) {
+                console.log(err);
+            }
+        })
+        return books
+    } catch (error) {
+        return null
+    }
+   
+}
 
 module.exports = {
-    getContent
+    getContent,
+    getSearchResult
 }
