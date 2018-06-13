@@ -284,12 +284,12 @@ const source = {
         searchReg2:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/,
         contentReg: /<div id="content"[\s\S]*?<\/div>/,
         catalogReges: {
-            catalogAreaRegex: /<ul class="chapters">.*?<\/ul>/,
+            catalogAreaRegex: /<ul class="_chapter">.*?<\/ul>/,
             catalogItemRegex: /<a href.*?<\/a>/g,
             catalogItemDetailRegex: /href=\"(.*?)\">(.*?)<\/a>/,
-            introRegex: /<meta property="og:description".*?content=\"(.*?)\"\/>/,
-            coverRegex: /<meta property="og:image".*?content=\"(.*?)\"\/>/,
-            authorRegex: /<meta property="og:novel:author".*?content=\"(.*?)\"\/>/,
+            introRegex: /<div id="intro">(.*?)<\/div>/,
+            coverRegex: /<div id="fmimg">.*?src=\"(.*?)\"/,
+            authorRegex: /<p>作者：(.*?)<\/p>/,
         }
     },
 }

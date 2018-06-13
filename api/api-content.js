@@ -11,7 +11,7 @@ async function getContent(params) {
             method: 'get',
             url: params.url,
             responseType: 'arraybuffer',
-            transformResponse: [function(data) {
+            transformResponse: [function (data) {
                 var str = iconv.decode(data, 'GBK')
                 return str
             }]
@@ -31,13 +31,13 @@ function getCatalogPageUrl(params) {
 }
 
 async function getCatalogs(params) {
-    let url = getCatalogPageUrl(params)
+    let url = params.isDirct == '1' ? params.url : getCatalogPageUrl(params)
     try {
         var result = await axios({
             method: 'get',
             url: url,
             responseType: 'arraybuffer',
-            transformResponse: [function(data) {
+            transformResponse: [function (data) {
                 var str = iconv.decode(data, 'GBK')
                 return str
             }]

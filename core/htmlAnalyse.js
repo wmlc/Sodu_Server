@@ -119,6 +119,7 @@ function getCatalogs(html, regexStrs, catalogPageUrl) {
                     let catalog = {}
                     catalog.index = index
                     catalog.catalogUrl = regexStrs.addPre ? catalogPageUrl + match[1] : match[1]
+                    catalog.catalogUrl  = catalog.catalogUrl.replace(/\t/g,'')
                     catalog.catalogName = match[2]
                     catalogs.push(catalog)
                     index += 1
