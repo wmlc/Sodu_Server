@@ -174,6 +174,7 @@ function getSearchResult(html, sourceItem) {
                     book.bookName = match[2]
                     book.updatePageUrl = match[1]
                     book.lyWeb = sourceItem.disc 
+                    book.author = match[3]
                     books.push(book)
                 }
                  return books
