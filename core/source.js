@@ -278,7 +278,9 @@ const source = {
     bqg: {
         type: 1,
         host: 'www.biquge5.com',
-        search:'http://www.biquge5.com/so?searchkey=',
+        search: (key)=> {
+            return  'http://www.biquge5.com/so?searchkey=' + key
+        },
         disc: '笔趣阁',
         searchReg:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/g,
         searchReg2:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/,
@@ -292,6 +294,25 @@ const source = {
             authorRegex: /<p>作者：(.*?)<\/p>/,
         }
     },
+    psw: {
+        type: 1,
+        host: 'www.vodtw.com',
+        search: (key)=> { 
+           return `https://www.vodtw.com/Book/Search.aspx?SearchKey=${key}&SearchClass=1`
+        },
+        disc: '品书网',
+        searchReg:/<div id="CListTitle">[\s\S]*?CListText[\s\S]*?<\/div>/g,
+        searchReg2:/<div id="CListTitle">[\s\S]*?href="(.*?)"[\s\S]*?<b>(.*?)<\/b>[\s\S]*?target.*>(.*?)<\/a>[\s\S]*?CListText[\s\S]*?<\/div>/,
+        contentReg: /<div id="content"[\s\S]*?<\/div>/,
+        catalogReges: {
+            catalogAreaRegex: /<ul class="_chapter">.*?<\/ul>/,
+            catalogItemRegex: /<a href.*?<\/a>/g,
+            catalogItemDetailRegex: /href=\"(.*?)\">(.*?)<\/a>/,
+            introRegex: /<div id="intro">(.*?)<\/div>/,
+            coverRegex: /<div id="fmimg">.*?src=\"(.*?)\"/,
+            authorRegex: /<p>作者：(.*?)<\/p>/,
+        }
+    }
 }
 
 function check(host) {

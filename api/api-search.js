@@ -7,7 +7,8 @@ import analysis from '../core/htmlAnalyse'
 const iconv = require('iconv-lite');
 const moment = require('moment')
 const resultCode = require('../api/api-resultCode');
-const searchSources = [source.source.bqg]
+// const searchSources = [source.source.bqg,source.source.psw]
+const searchSources = []
 
 function getBooks(html) {
     try {
@@ -35,35 +36,21 @@ function getBooks(html) {
     }
 }
 
-function getThirdSearchResult(html, sourceItem) {
-    let books = analysis.getSearchResult(html, sourceItem.searchReg, sourceItem.host)
-}
-
-
 async function getSearchResult(para) {
-
-
     let buffer =  iconv.encode(para,'gbk')
     let  tempPara = '';
 
     buffer.forEach(b => {
         tempPara += '%' + b.toString(16)
     })
-    console.log(tempPara);
-
     let uri = url.getSearchUrl(para)
     try {
-        // let requests = searchSources.map((element) => {
-        //     return axios.get(element.search + para)
-        // });
-
         let requests = []
         requests.push(axios.get(uri))
-
         searchSources.forEach(item => {
             requests.push(axios({
                 method: 'get',
-                url: item.search + tempPara,
+                url: item.search('tempPara'),
                 responseType: 'arraybuffer',
                 transformResponse: [function (data) {
                     var str = iconv.decode(data, 'GBK')
