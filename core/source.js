@@ -200,22 +200,22 @@ const source = {
             addPre: true,
         }
     },
-    byxsw: {
-        type: 1,
-        host: 'www.81xsw.com',
-        disc: '八一小说网',
-        contentReg: /<div id=\"?content\"?[\s\S]*?<\/div>/,
-        catalogReges: {
-            catalogAreaRegex: /<div id=\"list\">.*?<\/div>/,
-            catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
-            catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
-            introRegex: /<div id=\"intro\">(.*?)<\/div>/,
-            coverRegex: /<div id=\"fmimg\"><img.*?src=\"(.*?)\".*?\/>/,
-            authorRegex: /<p>作&nbsp;&nbsp;&nbsp;&nbsp;者：(.*?)<\/p>/,
-            addPre: true,
-            imgPre: true
-        }
-    },
+    // byxsw: {
+    //     type: 1,
+    //     host: 'www.81xsw.com',
+    //     disc: '八一小说网',
+    //     contentReg: /<div id=\"?content\"?[\s\S]*?<\/div>/,
+    //     catalogReges: {
+    //         catalogAreaRegex: /<div id=\"list\">.*?<\/div>/,
+    //         catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
+    //         catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
+    //         introRegex: /<div id=\"intro\">(.*?)<\/div>/,
+    //         coverRegex: /<div id=\"fmimg\"><img.*?src=\"(.*?)\".*?\/>/,
+    //         authorRegex: /<p>作&nbsp;&nbsp;&nbsp;&nbsp;者：(.*?)<\/p>/,
+    //         addPre: true,
+    //         imgPre: true
+    //     }
+    // },
     dsb: {
         type: 1,
         host: 'www.dashubao.cc',
@@ -231,22 +231,22 @@ const source = {
             addPre: true,
         }
     },
-    qlwx: {
-        type: 1,
-        host: 'www.76wx.com',
-        disc: '齐鲁文学',
-        contentReg: /<div id=\"content\">.*?<\/div>/,
-        catalogReges: {
-            catalogAreaRegex: /<dl>.*?<\/dl>/,
-            catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
-            catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
-            introRegex: /<div id=\"intro\">(.*?)<\/div/,
-            coverRegex: /<div id=\"fmimg\">.*?<img.*?src=\"(.*?)\".*?\/>/,
-            authorRegex: /<p>作.*?者：(.*?)<\/p>/,
-            addPre: true,
-            imgPre: true,
-        }
-    },
+    // qlwx: {
+    //     type: 1,
+    //     host: 'www.76wx.com',
+    //     disc: '齐鲁文学',
+    //     contentReg: /<div id=\"content\">.*?<\/div>/,
+    //     catalogReges: {
+    //         catalogAreaRegex: /<dl>.*?<\/dl>/,
+    //         catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
+    //         catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
+    //         introRegex: /<div id=\"intro\">(.*?)<\/div/,
+    //         coverRegex: /<div id=\"fmimg\">.*?<img.*?src=\"(.*?)\".*?\/>/,
+    //         authorRegex: /<p>作.*?者：(.*?)<\/p>/,
+    //         addPre: true,
+    //         imgPre: true,
+    //     }
+    // },
     ylb: {
         type: 1,
         host: 'www.prwx.com',
