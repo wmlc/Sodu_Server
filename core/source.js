@@ -200,22 +200,22 @@ const source = {
             addPre: true,
         }
     },
-    byxsw: {
-        type: 1,
-        host: 'www.81xsw.com',
-        disc: '八一小说网',
-        contentReg: /<div id=\"?content\"?[\s\S]*?<\/div>/,
-        catalogReges: {
-            catalogAreaRegex: /<div id=\"list\">.*?<\/div>/,
-            catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
-            catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
-            introRegex: /<div id=\"intro\">(.*?)<\/div>/,
-            coverRegex: /<div id=\"fmimg\"><img.*?src=\"(.*?)\".*?\/>/,
-            authorRegex: /<p>作&nbsp;&nbsp;&nbsp;&nbsp;者：(.*?)<\/p>/,
-            addPre: true,
-            imgPre: true
-        }
-    },
+    // byxsw: {
+    //     type: 1,
+    //     host: 'www.81xsw.com',
+    //     disc: '八一小说网',
+    //     contentReg: /<div id=\"?content\"?[\s\S]*?<\/div>/,
+    //     catalogReges: {
+    //         catalogAreaRegex: /<div id=\"list\">.*?<\/div>/,
+    //         catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
+    //         catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
+    //         introRegex: /<div id=\"intro\">(.*?)<\/div>/,
+    //         coverRegex: /<div id=\"fmimg\"><img.*?src=\"(.*?)\".*?\/>/,
+    //         authorRegex: /<p>作&nbsp;&nbsp;&nbsp;&nbsp;者：(.*?)<\/p>/,
+    //         addPre: true,
+    //         imgPre: true
+    //     }
+    // },
     dsb: {
         type: 1,
         host: 'www.dashubao.cc',
@@ -231,22 +231,22 @@ const source = {
             addPre: true,
         }
     },
-    qlwx: {
-        type: 1,
-        host: 'www.76wx.com',
-        disc: '齐鲁文学',
-        contentReg: /<div id=\"content\">.*?<\/div>/,
-        catalogReges: {
-            catalogAreaRegex: /<dl>.*?<\/dl>/,
-            catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
-            catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
-            introRegex: /<div id=\"intro\">(.*?)<\/div/,
-            coverRegex: /<div id=\"fmimg\">.*?<img.*?src=\"(.*?)\".*?\/>/,
-            authorRegex: /<p>作.*?者：(.*?)<\/p>/,
-            addPre: true,
-            imgPre: true,
-        }
-    },
+    // qlwx: {
+    //     type: 1,
+    //     host: 'www.76wx.com',
+    //     disc: '齐鲁文学',
+    //     contentReg: /<div id=\"content\">.*?<\/div>/,
+    //     catalogReges: {
+    //         catalogAreaRegex: /<dl>.*?<\/dl>/,
+    //         catalogItemRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/g,
+    //         catalogItemDetailRegex: /<dd><a href=\"(.*?)\">(.*?)<\/a><\/dd>/,
+    //         introRegex: /<div id=\"intro\">(.*?)<\/div/,
+    //         coverRegex: /<div id=\"fmimg\">.*?<img.*?src=\"(.*?)\".*?\/>/,
+    //         authorRegex: /<p>作.*?者：(.*?)<\/p>/,
+    //         addPre: true,
+    //         imgPre: true,
+    //     }
+    // },
     ylb: {
         type: 1,
         host: 'www.prwx.com',
@@ -275,6 +275,44 @@ const source = {
             authorRegex: /<meta property="og:novel:author".*?content=\"(.*?)\"\/>/,
         }
     },
+    bqg: {
+        type: 1,
+        host: 'www.biquge5.com',
+        search: (key)=> {
+            return  'http://www.biquge5.com/so?searchkey=' + key
+        },
+        disc: '笔趣阁',
+        searchReg:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/g,
+        searchReg2:/<div class="result">[\S\s]*?href="(.*?)"[\s\S]*?>(.*?)<span>(.*?)小说[\s\S]*?com\/(.*?)\/[\s\S]*?<\/span><\/div>/,
+        contentReg: /<div id="content"[\s\S]*?<\/div>/,
+        catalogReges: {
+            catalogAreaRegex: /<ul class="_chapter">.*?<\/ul>/,
+            catalogItemRegex: /<a href.*?<\/a>/g,
+            catalogItemDetailRegex: /href=\"(.*?)\">(.*?)<\/a>/,
+            introRegex: /<div id="intro">(.*?)<\/div>/,
+            coverRegex: /<div id="fmimg">.*?src=\"(.*?)\"/,
+            authorRegex: /<p>作者：(.*?)<\/p>/,
+        }
+    },
+    psw: {
+        type: 1,
+        host: 'www.vodtw.com',
+        search: (key)=> { 
+           return `https://www.vodtw.com/Book/Search.aspx?SearchKey=${key}&SearchClass=1`
+        },
+        disc: '品书网',
+        searchReg:/<div id="CListTitle">[\s\S]*?CListText[\s\S]*?<\/div>/g,
+        searchReg2:/<div id="CListTitle">[\s\S]*?href="(.*?)"[\s\S]*?<b>(.*?)<\/b>[\s\S]*?target.*>(.*?)<\/a>[\s\S]*?CListText[\s\S]*?<\/div>/,
+        contentReg: /<div id="content"[\s\S]*?<\/div>/,
+        catalogReges: {
+            catalogAreaRegex: /<ul class="_chapter">.*?<\/ul>/,
+            catalogItemRegex: /<a href.*?<\/a>/g,
+            catalogItemDetailRegex: /href=\"(.*?)\">(.*?)<\/a>/,
+            introRegex: /<div id="intro">(.*?)<\/div>/,
+            coverRegex: /<div id="fmimg">.*?src=\"(.*?)\"/,
+            authorRegex: /<p>作者：(.*?)<\/p>/,
+        }
+    }
 }
 
 function check(host) {

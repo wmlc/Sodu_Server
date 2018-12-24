@@ -22,7 +22,8 @@
         "express": "^4.16.3",
         "iconv-lite": "^0.4.19",
         "lodash": "^4.17.5",
-        "moment": "^2.21.0"
+        "moment": "^2.21.0",
+        "ssl-root-cas": "^1.2.5"
     },
     "devDependencies": {
         "babel-cli": "^6.26.0",

@@ -5,13 +5,19 @@ import contentType from '../model/contentType'
 const iconv = require('iconv-lite');
 const resultCode = require('../api/api-resultCode');
 
+// var rootCas = require('ssl-root-cas/latest').create();
+// var https = require('https');
+// https.globalAgent.options.ca = rootCas;
+// // axios.agent = rootCas;
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 async function getContent(params) {
     try {
         let result = await axios({
             method: 'get',
             url: params.url,
             responseType: 'arraybuffer',
-            transformResponse: [function(data) {
+            rejectUnauthorized: false,
+            transformResponse: [function (data) {
                 var str = iconv.decode(data, 'GBK')
                 return str
             }]
@@ -20,6 +26,7 @@ async function getContent(params) {
         let value = resultCode.createResult(resultCode.success, content)
         return value
     } catch (e) {
+        console.log(e);
         let value = resultCode.createResult(resultCode.faild, e.message)
         return value
     }
@@ -31,13 +38,13 @@ function getCatalogPageUrl(params) {
 }
 
 async function getCatalogs(params) {
-    let url = getCatalogPageUrl(params)
+    let url = params.isDirct == '1' ? params.url : getCatalogPageUrl(params)
     try {
         var result = await axios({
             method: 'get',
             url: url,
             responseType: 'arraybuffer',
-            transformResponse: [function(data) {
+            transformResponse: [function (data) {
                 var str = iconv.decode(data, 'GBK')
                 return str
             }]

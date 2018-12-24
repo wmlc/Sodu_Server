@@ -1,8 +1,14 @@
 import axios from 'axios';
 import url from '../core/soduUrl';
 import Book from '../model/book'
-var moment = require('moment')
+import source from '../core/source'
+import analysis from '../core/htmlAnalyse'
+
+const iconv = require('iconv-lite');
+const moment = require('moment')
 const resultCode = require('../api/api-resultCode');
+// const searchSources = [source.source.bqg,source.source.psw]
+const searchSources = []
 
 function getBooks(html) {
     try {
@@ -30,15 +36,38 @@ function getBooks(html) {
     }
 }
 
-
 async function getSearchResult(para) {
+    let buffer =  iconv.encode(para,'gbk')
+    let  tempPara = '';
+
+    buffer.forEach(b => {
+        tempPara += '%' + b.toString(16)
+    })
     let uri = url.getSearchUrl(para)
     try {
-        var result = await axios({
-            method: 'get',
-            url: uri
+        let requests = []
+        requests.push(axios.get(uri))
+        searchSources.forEach(item => {
+            requests.push(axios({
+                method: 'get',
+                url: item.search('tempPara'),
+                responseType: 'arraybuffer',
+                transformResponse: [function (data) {
+                    var str = iconv.decode(data, 'GBK')
+                    return str
+                }]
+            }))
         })
-        var books = getBooks(result.data)
+        var results = await axios.all(requests)
+        let books = getBooks(results[0].data)
+        for (let i = 1; i < results.length; i++) {
+            let sourceItem = searchSources[i - 1]
+            let temp = analysis.getSearchResult(results[i].data, sourceItem)
+            if (temp && temp.length > 0) {
+                books = books.concat(temp)
+            }
+        }
+       
         if (books) {
             let result = resultCode.createResult(resultCode.success, books)
             return result
@@ -51,4 +80,6 @@ async function getSearchResult(para) {
     }
 }
 
-module.exports = { getSearchResult }
+module.exports = {
+    getSearchResult
+}
